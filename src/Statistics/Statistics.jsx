@@ -1,28 +1,21 @@
+import styles from './Statistics.module.css';
 
-import styles from './Statistics.module.css'
+const Statistics = ({ title, stats }) => {
+  return (
+    <section className={styles.statistics}>
+      {title && <h2 className={styles.title}>Upload stats</h2>}
 
-const Statistics = (title, stats)=>{
-    return(<section className={styles.statistics}>
-    <h2 className={styles.title} >Upload stats</h2>
-  
-    <ul className={styles.statList}>
-      <li className={styles.item}>
-        <span className={styles.label}>.docx</span>
-        <span className={styles.percentage}>4%</span>
-      </li>
-      <li className={styles.item}>
-        <span className={styles.label}>.mp3</span>
-        <span className={styles.percentage}>14%</span>
-      </li>
-      <li className={styles.item}>
-        <span className={styles.label}>.pdf</span>
-        <span className={styles.percentage} >41%</span>
-      </li>
-      <li className={styles.item}>
-        <span className={styles.label}>.mp4</span>
-        <span className={styles.percentage}>12%</span>
-      </li>
-    </ul>
-  </section>)
-}
-export default Statistics
+      <ul className={styles.statList}>
+        {stats.map(el => {
+          return (
+            <li className={styles.item} key={el.id}>
+              <span className={styles.label}>{el.label}</span>
+              <span className={styles.percentage}>{el.percentage}</span>
+            </li>
+          );
+        })}
+      </ul>
+    </section>
+  );
+};
+export default Statistics;
